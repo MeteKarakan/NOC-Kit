@@ -1,0 +1,16 @@
+{
+  "name": "NOC-Kit — Ağ Mühendisi Araç Kutusu",
+  "short_name": "NOC-Kit",
+  "description": "Subnet, VLAN, OSPF, BGP, ACL, NAT ve IPsec VPN konfigürasyonu üreten, tamamen tarayıcıda çalışan ağ araç kutusu.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "lang": "tr",
+  "background_color": "#0E1218",
+  "theme_color": "#0E1218",
+  "icons": [
+    { "src": "img/favicon.png", "sizes": "128x128", "type": "image/png", "purpose": "any" },
+    { "src": "img/favicon.png", "sizes": "128x128", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NOC-Kit — Cisco, Fortinet, Palo Alto, Huawei ve Aruba sözdiziminde subnet, VLAN, OSPF, BGP, ACL, NAT ve IPsec VPN konfigürasyonu üreten 28 araçlık, tamamen tarayıcıda çalışan ağ araç kutusu.">
+<meta name="author" content="NOC-Kit">
+<meta name="robots" content="index, follow">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NOC-Kit">
+<meta property="og:title" content="NOC-Kit — Ağ Mühendisi Araç Kutusu">
+<meta property="og:description" content="Subnet, VLSM, VLAN, STP, OSPF, BGP, ACL, NAT, IPsec VPN ve daha fazlası. 28 araç, 5 dil, %100 tarayıcı tarafı.">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NOC-Kit — Ağ Mühendisi Araç Kutusu">
+<meta name="twitter:description" content="28 araçlık, sunucusuz ağ konfigürasyon araç kutusu.">
+<link rel="canonical" href="https://noc-kit.com/">
+<meta property="og:url" content="https://noc-kit.com/">
+<meta property="og:image" content="https://noc-kit.com/assets/img/og-cover.png">
+<meta name="twitter:image" content="https://noc-kit.com/assets/img/og-cover.png">
+<meta name="theme-color" content="#0E1218" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F3F2EE" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+<link rel="manifest" href="assets/manifest.webmanifest">
+<title>NOC-Kit — Ağ Mühendisi Araç Kutusu | Subnet, VLAN, BGP, ACL, VPN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="assets/js/theme-init.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<noscript><p style="padding:16px;font-family:monospace">NOC-Kit tamamen tarayıcıda çalışır; araçları kullanmak için JavaScript'i etkinleştirin.</p></noscript>
+
+<div class="shell">
+  <div class="topbar">
+    <div class="prompt"><b>noc-kit</b>@toolkit:~$ <span id="activeToolPrompt">subnet-calc</span><span class="cursor"></span></div>
+    <div class="topbar-right">
+      <span><span class="dot-live"></span><span data-i18n="online">çevrimiçi</span></span>
+      <span id="clock">00:00:00</span>
+      <div id="langSwitch" role="group" aria-label="Dil" style="display:flex;gap:4px;">
+        <button class="seg active" data-lang="tr">TR</button>
+        <button class="seg" data-lang="en">EN</button>
+        <button class="seg" data-lang="de">DE</button>
+        <button class="seg" data-lang="fr">FR</button>
+        <button class="seg" data-lang="es">ES</button>
+      </div>
+      <button class="seg" id="themeToggle" type="button" aria-label="Tema" data-i18n="theme_dark">koyu</button>
+    </div>
+  </div>
+
+  <div class="header">
+    <div class="brand">
+      <img class="brand-logo brand-dark" src="assets/img/logo-dark.png" alt="NOC-Kit" width="350" height="112" decoding="async">
+      <img class="brand-logo brand-light" src="assets/img/logo-light.png" alt="NOC-Kit" width="350" height="112" decoding="async">
+      <span class="brand-tag">network engineer toolkit</span>
+    </div>
+    <h1 class="sr-only" data-i18n="app_title">Ağ Araç Seti</h1>
+    <p data-i18n="app_subtitle">Alt ağ, yönlendirme, güvenlik ve VPN yapılandırmalarını Cisco, Fortinet, Palo Alto, Huawei ve Aruba sözdizimiyle üretin — 28 araç, 5 dil, hepsi tarayıcıda çalışır, hiçbir veri dışarı gönderilmez.</p>
+    <div class="meta">
+      <span class="chip"><b id="toolCount">28</b> <span data-i18n="meta_tools">araç</span></span>
+      <span class="chip"><b>5</b> <span data-i18n="meta_langs">dil</span></span>
+      <span class="chip" data-i18n="meta_offline">%100 çevrimdışı · veri sunucuya gitmez</span>
+    </div>
+  </div>
+
+  <div class="layout">
+    <nav class="nav" id="nav">
+      <div class="nav-search"><input type="text" id="toolSearch" data-i18n-ph="search_ph" placeholder="Araç ara…"></div>
+      <div class="nav-scroll" id="navScroll"></div>
+      <div class="nav-empty" id="navEmpty" data-i18n="no_results">Eşleşen araç yok</div>
+    </nav>
+    <main class="panel" id="views"></main>
+  </div>
+
+  <div class="footer">
+    <span data-i18n="footer_left">NOC-Kit — yalnızca tarayıcı tarafı, sunucusuz</span>
+    <span id="footerClock"></span>
+  </div>
+</div>
+
+<button class="to-top" id="toTop" type="button" aria-label="top" data-i18n="to_top">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"><span class="dot-live"></span><span id="toastMsg">Kopyalandı</span></div>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/views.js"></script>
+<script src="assets/js/tools.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
